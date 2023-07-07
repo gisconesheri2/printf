@@ -12,4 +12,6 @@ unsigned long int exponent_num(unsigned int base, unsigned long int times);
 int print_unsigned(int *pos, long int n);
 char *get_binary_negative(long int n);
 int print_octal(int *pos, long int n);
+int print_hexadecimal_small(int *pos, long int n);
+int print_hexadecimal_capital(int *pos, long int n);
 #endif
