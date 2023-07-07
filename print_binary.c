@@ -15,47 +15,29 @@ int print_binary(int *pos, int number)
 	int len = 0;
 	int i = 0;
 
-	while (num > 0)
-	{
+	for (; num > 0; len++)
 		num = num / 2;
-		len++;
-	}
-
 	if (number < 0)
 	{
 		binary_reversed = malloc(sizeof(char) * 32);
 		if (binary_reversed == NULL)
 			return (1);
 		num = number * -1;
-		while (num > 0)
-		{
+		for (; num > 0; i++, num /= 2)
 			binary_reversed[i] = num_to_char(num % 2);
-			num = num / 2;
-			i++;
-		}
 		for (; i < 32; i++)
-		{
 			binary_reversed[i] = num_to_char(1);
-		}
-
 		len = 32;
 	}
-
 	if (number > 0)
 	{
 		binary_reversed = malloc(sizeof(char) * len);
 		if (binary_reversed == NULL)
 			return (1);
 		num = number;
-
-		while (num > 0)
-		{
+		for (; num > 0; i++, num /= 2)
 			binary_reversed[i] = num_to_char(num % 2);
-			num = num / 2;
-			i++;
-		}
 	}
-
 	if (number == 0)
 	{
 		binary_reversed = malloc(sizeof(char) * 1);
@@ -65,12 +47,9 @@ int print_binary(int *pos, int number)
 		i = 1;
 		len = 1;
 	}
-
 	i--;
 	for (; i >= 0; i--)
-	{
 		_putchar(binary_reversed[i]);
-	}
 	*pos = *pos + 2;
 	free(binary_reversed);
 

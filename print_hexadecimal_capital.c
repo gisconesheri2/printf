@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include "main.h"
 #include <stdlib.h>
+#include <limits.h>
+/**
+ * num_to_hex_letter_c - convert 10-15 to characters A-F
+ * @rem: numbers 10 to 15
+ * Return: characters A-F
+ */
 char num_to_hex_letter_c(long int rem)
 {
 	long int num = 10;
@@ -17,7 +23,7 @@ char num_to_hex_letter_c(long int rem)
 }
 
 /**
- * get_hex_positive - convert a positive number to hexadecimal form
+ * get_hex_positive_c - convert a positive number to hexadecimal form
  * @n: number to convert
  * Return: pointer to string containing the hexadecimal number in reverse
  */
@@ -49,7 +55,7 @@ char *get_hex_positive_c(long int n)
 	return (rev_hex);
 }
 /**
- * get_hex_negative - convert a negative number to hexadecimal form
+ * get_hex_negative_c - convert a negative number to hexadecimal form
  * @n: number to convert
  * Return: pointer to string containing the hexadecimal number in reverse
  */
@@ -92,7 +98,7 @@ char *get_hex_negative_c(long int n)
 	return (hexadecimal_num);
 }
 /**
- * print_hexadecimal - print the reversed hexadecimal string onto stdout
+ * print_hexadecimal_capital - print the reversed hexadecimal string to stdout
  * @pos: current position in the larger string
  * @n: number recevied from _printf
  * Return: length of the string printed out
@@ -106,7 +112,11 @@ int print_hexadecimal_capital(int *pos, long int n)
 	if (n < 0)
 		hex_reversed = get_hex_negative_c(n);
 	else
+	{
+		if (n > UINT_MAX)
+			n = n - UINT_MAX - 1;
 		hex_reversed = get_hex_positive_c(n);
+	}
 
 	if (hex_reversed == NULL)
 		return (0);
@@ -123,24 +133,3 @@ int print_hexadecimal_capital(int *pos, long int n)
 	free(hex_reversed);
 	return (i);
 }
-
-/*int main(void)
-{
-	int c = 2;
-	print_octal(&c, 1024);
-	printf("\n");
-	print_octal(&c, -1024);
-	printf("\n");
-	print_octal(&c, 342);
-	printf("\n");
-	print_octal(&c, -342);
-	printf("\n");
-	print_octal(&c, 15);
-	printf("\n");
-	print_octal(&c, 16);
-	printf("\n");
-	print_octal(&c, -16);
-	printf("\n");
-	return (0);
-}*/
-

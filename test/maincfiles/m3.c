@@ -1,36 +1,30 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
 #include "main.h"
 
+/**
+ *  * main - Entry point
+ *   *
+ *    * Return: 0 on success, error code otherwise
+ *     */
 int main(void)
 {
-	int len = 0, len2 = 0;
+		int len, len2;
+			long int l = 0;
+					printf("%ld\n", l);
 
-	len = printf("%x\n", 12);
-	len2 = _printf("%x\n", 12);
-	printf("native len is %d, pits is %d\n", len, len2);
-
-	len = printf("%x\n", 1024);
-	len2 = _printf("%x\n", 1024);
-	printf("native len is %d, pits is %d\n", len, len2);
-
-	len = printf("%x\n", -312);
-	len2 = _printf("%x\n", -312);
-	printf("native len is %d, pits is %d\n", len, len2);
-
-	len = printf("%x\n", 10000);
-	len2 = _printf("%x\n", 10000);
-	printf("native len is %d, pits is %d\n", len, len2);
-
-	len = printf("some before %x\n", 10000);
-	len2 = _printf("some before %x\n", 10000);
-	printf("native len is %d, pits is %d\n", len, len2);
-
-	len = printf("%Xsome after\n", -1024);
-	len2 = _printf("%Xsome after\n", -1024);
-	printf("native len is %d, pits is %d\n", len, len2);
-
-	len = printf("before %X and after\n", 10000);
-	len2 = _printf("before %X and after\n", 10000);
-	printf("native len is %d, pits is %d\n", len, len2);
-	return (0);
+				l += 10;
+					len = _printf("%o", l);
+					printf("\n");
+						len2 = printf("%o", l);
+					printf("\n");
+							fflush(stdout);
+								if (len != len2)
+										{
+													printf("_printf len is %d and printf len is %d Lengths differ.\n", len, len2);
+															fflush(stdout);
+																	return (1);
+																		}
+									return (0);
 }

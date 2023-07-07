@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "main.h"
 #include <stdlib.h>
+#include <limits.h>
 /**
  * get_octal_positive - convert a negative number to octal form
  * @n: number to convert
@@ -88,7 +89,11 @@ int print_octal(int *pos, long int n)
 	if (n < 0)
 		octal_reversed = get_octal_negative(n);
 	else
+	{
+		if (n > UINT_MAX)
+			n = n - UINT_MAX - 1;
 		octal_reversed = get_octal_positive(n);
+	}
 
 	if (octal_reversed == NULL)
 		return (0);

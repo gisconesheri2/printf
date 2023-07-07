@@ -1,7 +1,8 @@
 /**
- * exponent_two - returns 2 to the power of times
+ * exponent_num - returns base to the power of times
+ * @base: number with which to get the multiples of
  * @times: the exponent
- * Return: result of 2 to the power of 'times'
+ * Return: result of base to the power of 'times'
  */
 unsigned long int exponent_num(unsigned int base, unsigned long int times)
 {

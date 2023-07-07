@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include "main.h"
 #include <stdlib.h>
+#include <limits.h>
+/**
+ * num_to_hex_letter - converts numbers 10-15 to corresponding hex letter A-F
+ * @rem: number to convert to hex letter
+ * Return: character ranging from A to F
+ */
+
 char num_to_hex_letter(long int rem)
 {
 	long int num = 10;
@@ -92,7 +99,7 @@ char *get_hex_negative(long int n)
 	return (hexadecimal_num);
 }
 /**
- * print_hexadecimal - print the reversed hexadecimal string onto stdout
+ * print_hexadecimal_small - print the reversed hexadecimal string onto stdout
  * @pos: current position in the larger string
  * @n: number recevied from _printf
  * Return: length of the string printed out
@@ -106,8 +113,11 @@ int print_hexadecimal_small(int *pos, long int n)
 	if (n < 0)
 		hex_reversed = get_hex_negative(n);
 	else
+	{
+		if (n > UINT_MAX)
+			n = n - UINT_MAX - 1;
 		hex_reversed = get_hex_positive(n);
-
+	}
 	if (hex_reversed == NULL)
 		return (0);
 
@@ -123,24 +133,3 @@ int print_hexadecimal_small(int *pos, long int n)
 	free(hex_reversed);
 	return (i);
 }
-
-/*int main(void)
-{
-	int c = 2;
-	print_octal(&c, 1024);
-	printf("\n");
-	print_octal(&c, -1024);
-	printf("\n");
-	print_octal(&c, 342);
-	printf("\n");
-	print_octal(&c, -342);
-	printf("\n");
-	print_octal(&c, 15);
-	printf("\n");
-	print_octal(&c, 16);
-	printf("\n");
-	print_octal(&c, -16);
-	printf("\n");
-	return (0);
-}*/
-
